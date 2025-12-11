@@ -1,7 +1,7 @@
 <?php
     require 'Article.php';
-    $articles = [new Article("First News", "This is the first news content...", "2025-12-01"), 
-                 new Article("Second News", "Another news content for demo...", "2025-12-02")];
+    $articles = [new Article("First News", "This is the first news content...", "2025-12-01", "Nguyen Van A", "Technology"), 
+                 new Article("Second News", "Another news content for demo...", "2025-12-02", "Tran Thi B", "Health")];
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +22,11 @@
                 <br>
                 <small><?php echo $a->createdAt; ?></small>
             </li>
+        <?php endforeach; ?>
+
+        <br>
+        <?php foreach ($articles as $a): ?>
+            <li><?php echo $a->getFullTitle(); ?></li>
         <?php endforeach; ?>
     </ul>
 </body>
