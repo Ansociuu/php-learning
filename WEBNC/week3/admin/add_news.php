@@ -1,17 +1,6 @@
 <?php
-    // 1. Kết nối CSDL (tạm thời viết trực tiếp trong file này) 
-    $host = "localhost";
-    $user = "root";     
-    $pass = ""; //nếu bạn đã đặt mật khẩu MySQL, sửa lại ở đây
-    $db = "news_db";
-
-    $conn = mysqli_connect($host, $user, $pass, $db);
-    if (!$conn)
-    {
-        die("Kết nối CSDL thất bại: " . mysqli_connect_error());
-    }
-
-    // Thiết lập charset để tránh lỗi tiếng Việt mysqli_set_charset($conn, "utf8mb4"); 
+    // Sử dụng file cấu hình kết nối chung require 
+    require '../config.php'; 
 
     $message = "";
 
@@ -57,6 +46,7 @@
 </head>
 <body>
     <h1>Thêm bài viết mới</h1>
+    <a href="list_news.php">Xem danh sách</a>
 
     <?php if ($message !== ""): ?>
         <p style="color: green;" ><?php echo $message; ?></p>
