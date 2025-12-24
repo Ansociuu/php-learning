@@ -58,7 +58,7 @@
             <input type="text" name="title" style="width: 400px;" required>
         </p>
         <p>
-            <label>Nội dung:</label>
+            <label>Nội dung:</label><br>
             <textarea name="content" rows="8" cols="60" required></textarea>
         </p>
         <p>
