@@ -38,11 +38,14 @@
                     <td><?php echo $row['id']; ?></td> 
                     <td><?php echo htmlspecialchars($row['title']); ?></td> 
                     <td><?php echo $row['created_at']; ?></td> 
+                    <td>
+                        <a href="view_news.php?id=<?php echo $row['id']; ?>">Xem chi tiết</a>
+                    </td>
                 </tr> 
             <?php endwhile; ?>
         <?php else: ?>
             <tr> 
-                <td colspan="3">Chưa có bài viết nào.</td> 
+                <td colspan="4">Chưa có bài viết nào.</td> 
             </tr> 
         <?php endif; ?>
     </table>
