@@ -31,6 +31,7 @@
             <th>ID</th> 
             <th>Tiêu đề</th> 
             <th>Ngày tạo</th> 
+            <th>Hành động</th>  
         </tr>
         <?php if (mysqli_num_rows($result) > 0): ?>
             <?php while ($row = mysqli_fetch_assoc($result)): ?>
@@ -38,8 +39,11 @@
                     <td><?php echo $row['id']; ?></td> 
                     <td><?php echo htmlspecialchars($row['title']); ?></td> 
                     <td><?php echo $row['created_at']; ?></td> 
-                    <td>
-                        <a href="view_news.php?id=<?php echo $row['id']; ?>">Xem chi tiết</a>
+                    <td>  
+                        <a href="view_news.php?id=<?php echo $row['id']; ?>">Xem</a> | 
+                        <a href="edit_news.php?id=<?php echo $row['id']; ?>">Sửa</a> | 
+                        <a href="delete_news.php?id=<?php echo $row['id']; ?>" 
+                        onclick="return confirm('Bạn có chắc chắn muốn xóa bài viết này?');">Xóa</a>   
                     </td>
                 </tr> 
             <?php endwhile; ?>
