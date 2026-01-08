@@ -28,12 +28,9 @@
         <tr>
             <th>ID</th>
             <th>Email</th>
-            <th>Tên người </th>
-            <th>Ngày sinh</th>
-            <th>Giới tính</th>
-            <th>Số điện thoại</th>
+            <th>Tên người dùng</th>
             <th>Ngày tạo</th>
-            <th>Ngày cập nhật</th>
+            <th>Hành động</th>
         </tr>
         <?php if (mysqli_num_rows($result) > 0): ?>
             <?php while ($row = mysqli_fetch_assoc($result)): ?>
@@ -41,11 +38,13 @@
                     <td><?php echo $row['id']; ?></td>
                     <td><?php echo $row['email']; ?></td>
                     <td><?php echo $row['username'] ?? 'Chưa cập nhật'; ?></td>
-                    <td><?php echo $row['date_of_birth'] ?? 'Chưa cập nhật'; ?></td>
-                    <td><?php echo $row['gender'] ?? 'Chưa cập nhật'; ?></td>
-                    <td><?php echo $row['phone'] ?? 'Chưa cập nhật'; ?></td>
                     <td><?php echo $row['created_at']; ?></td>
-                    <td><?php echo $row['updated_at']; ?></td>
+                    <td>
+                        <a href="view_users.php?id=<?php echo $row['id']; ?>">Xem</a> |
+                        <a href="edit_users.php?id=<?php echo $row['id']; ?>">Sửa</a> |
+                        <a href="delete_users.php?id=<?php echo $row['id']; ?>"
+                        onclick="return confirm('Bạn có chắc chắn muốn xóa người dùng này?');">Xóa</a>
+                    </td>
                 </tr>
             <?php endwhile; ?>
         <?php else: ?>

@@ -27,8 +27,12 @@
     //Xử lý khi form được submit 
     if ($_SERVER['REQUEST_METHOD'] === 'POST')
     {
-        $email = $POST['email'] ?? '';
-        $name = $POST['name'] ?? '';
+        $email = $_POST['email'] ?? '';
+        $username = $_POST['username'] ?? '';
+        $dob = $_POST['date_of_birth']  ?? '';
+        $gender = $_POST['gender'] ?? '';
+        $phone = $_POST['phone' ?? ''];
+
 
         if ($email === '')
         {
@@ -37,7 +41,8 @@
         else 
         {
             $now = date('Y-m-d H:i:s');
-            $sqlUpdate = "UPDATE news SET title = '$email', content = '$name' WHERE id = $id";
+            $sqlUpdate = "UPDATE users SET email = '$email', username = '$username', date_of_birth = '$dob', 
+                                            gender = '$gender', phone = $phone WHERE id = $id";
             $ok = mysqli_query($conn, $sqlUpdate);
 
             if ($ok)
@@ -63,7 +68,7 @@
 </head>
 <body>
     <h1>Sửa người dùng</h1>
-    <p><a href="list_news.php"><-- Quay lại danh sách</a></p>
+    <p><a href="list_users.php"><-- Quay lại danh sách</a></p>
 
     <?php if ($message !== ""): ?>
         <p style="color: red;"><?php echo $message; ?></p>
@@ -73,11 +78,33 @@
         <p> 
             <label>Email:</label><br> 
             <input type="text" name="email" style="width: 400px;"
-            value="<?php echo $users['email']; ?>" required></p> 
+            value="<?php echo $users['email']; ?>" required>
+        </p> 
         <p> 
             <label>Tên người dùng:</label><br> 
-            <textarea name="name" rows="8" cols="60" required><?php echo htmlspecialchars($users['name']); ?></textarea> 
+            <input type="text" name="username" style="width: 400px;" 
+            value="<?php  echo isset($users['username']) ? htmlspecialchars($users['username']) : htmlspecialchars('Chưa cập nhật'); ?>" required>
         </p> 
+        <p>
+            <label>Ngày sinh:</label><br>
+            <input type="date" name="date_of_birth" style="width: 400px;"
+            value="<?php echo $users['date_of_birth'] ?? '' ; ?>" required>
+        </p>
+        <p>
+            <label>Giới tính:</label><br>
+            <input type="radio" name="gender" value="male"
+                <?php if (($users['gender'] ?? '') == 'male') echo 'checked'; ?>> Nam
+            <input type="radio" name="gender" value="female"
+                <?php if (($users['gender'] ?? '') == 'female') echo 'checked'; ?>> Nữ
+            <input type="radio" name="gender" value="other"
+                <?php if (($users['gender'] ?? '') == 'other') echo 'checked'; ?>> Khác
+        </p>
+        <p>
+            <label>Số điện thoại:</label><br>
+            <input type="tel" name="phone" style="width: 400px;"
+            value="<?php echo $users['phone'] ?? 'Chưa cập nhật'; ?>"
+            pattern="[0-9]{9,11}" required>
+        </p>
         <p> 
             <button type="submit">Cập nhật</button> 
         </p> 

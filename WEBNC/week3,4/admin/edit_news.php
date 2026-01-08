@@ -27,8 +27,8 @@
     //Xử lý khi form được submit 
     if ($_SERVER['REQUEST_METHOD'] === 'POST')
     {
-        $title = $POST['title'] ?? '';
-        $content = $POST['content'] ?? '';
+        $title = $_POST['title'] ?? '';
+        $content = $_POST['content'] ?? '';
 
         if ($title === '' || $content === '')
         {
