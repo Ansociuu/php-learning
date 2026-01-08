@@ -31,7 +31,7 @@
         $username = $_POST['username'] ?? '';
         $dob = $_POST['date_of_birth']  ?? '';
         $gender = $_POST['gender'] ?? '';
-        $phone = $_POST['phone' ?? ''];
+        $phone = $_POST['phone'] ?? '';
 
 
         if ($email === '')
@@ -42,7 +42,7 @@
         {
             $now = date('Y-m-d H:i:s');
             $sqlUpdate = "UPDATE users SET email = '$email', username = '$username', date_of_birth = '$dob', 
-                                            gender = '$gender', phone = $phone WHERE id = $id";
+                                            gender = '$gender', phone = '$phone' WHERE id = $id";
             $ok = mysqli_query($conn, $sqlUpdate);
 
             if ($ok)

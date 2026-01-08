@@ -38,9 +38,12 @@
     <hr>
     <p>Email: <?php echo $users['email']; ?></p>
     <hr>
-    <p>Ngày sinh: <?php echo $users['date_of_birth'] ?? 'Chưa cập nhật'; ?></p>
+    <p>Ngày sinh: <?php echo date('d/m/Y', strtotime($users['date_of_birth'])) ?? 'Chưa cập nhật'; ?></p>
     <hr>
-    <p>Giới tính: <?php echo $users['gender'] ?? 'Chưa cập nhật'; ?></p>
+    <p>Giới tính: <?php if (($users['gender']) === 'male') {echo 'Nam';}
+                        elseif (($users['gender']) === 'female') {echo 'Nữ';}
+                        elseif (($users['gender']) === 'other') {echo 'Khác';}
+                        else echo 'Chưa cập nhật'; ?></p>
     <hr>
     <p>Số điện thoại: <?php echo $users['phone'] ?? 'Chưa cập nhật'; ?></p>
     <hr>
