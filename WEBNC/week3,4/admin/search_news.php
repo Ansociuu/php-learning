@@ -35,8 +35,6 @@
 </head>
 <body>
     <h1>Tìm kiếm tin tức</h1>
-    
-    
 
     <form method="post" action="">
         <p>
